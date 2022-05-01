@@ -1,0 +1,42 @@
+{% load static %}
+{% load account %}
+<nav class="navbar-nav navbar-light navbar-expand-sm" style="background-color: #ff9648">
+    <div class="navbar-brand">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar1"><span
+                class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbar1">
+            <ul class="navbar-nav nav-fill  w-100 ml-auto">
+                <img src="{% static "images/logo.svg" %}" style="object-fit:cover;width:82px;height:54px;">
+                <li class="nav-item activate"></li>
+                {% if user.is_authenticated and verified %}
+                    <li class="nav-item activate"><a class="nav-link" href="{% url 'account_logout' %}">登出</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/" data-bs-toggle="dropdown">會員專區</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/order/list">購物清單</a></li>
+                            <li><a class="dropdown-item" href="#">會員資料</a></li>
+                        </ul>
+                    </li>
+                {% elif not user.is_authenticated and not verified %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/" data-bs-toggle="dropdown">會員註冊</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'account_signup' %}">註冊</a></li>
+                            <li><a class="dropdown-item" href="{% url 'account_login' %}">已有帳號進行登入</a></li>
+                        </ul>
+                    </li>
+                {% endif %}
+                {% if request.path != '/accounts/logout/' and user.is_authenticated and not verified %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="/">請至個人信箱，啟動帳號</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item activate"><a class="nav-link" href="/listing">商品</a></li>
+                {% if user.is_authenticated and verified %}
+                    <li class="nav-item activate"><a class="nav-link" href='/checkout'>結帳</a></li>
+                {% endif %}
+
+            </ul>
+        </div>
+    </div>
+</nav>

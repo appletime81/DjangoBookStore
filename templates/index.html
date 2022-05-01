@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Cart購物{% endblock %}
+{% block content %}
+    <div class="bg-image"
+         style="background-image: url('https://images.pexels.com/photos/6043246/pexels-photo-6043246.jpeg?crop=entropy&cs=srgb&dl=pexels-mike-sember-6043246.jpg&fit=crop&fm=jpg&h=3648&w=5472');height: 100vh;
+                background-size: cover;">
+        <div class="row">
+
+            <div class="col col-md-12  text-center">
+                <br><br><br><br><br><br><br>
+                <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <!-- 輪播指示 -->
+                    <ol class="carousel-indicators">
+                        <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
+                        <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+
+                    </ol>
+                    <!-- 輪播內容 -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'images/carousel_001.jpeg' %}" class="d-block w-100">
+                            <div class="carousel-caption d-none d-md-block">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/carousel_002.png' %}" class="d-block w-100">
+                            <div class="carousel-caption d-none d-md-block">
+                            </div>
+                        </div>
+                        <!--div class="carousel-item">
+                            <img src="" class="d-block w-100">
+                            <div class="carousel-caption d-none d-md-block">
+                            </div>
+                        </div-->
+                    </div>
+                    <!-- 輪播控制 -->
+                    <a class="carousel-control-prev" href="#myCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

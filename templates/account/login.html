@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+{% block content %}
+    <br><br><br>
+    <div class="container p-3 mb-2">
+        <div class="row justify-content-md-center">
+            <hr size="1" color="#DDDDDD" border="0" height="1px">
+            <form class="login form-horizontal" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                <div class="row">
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                    <div class="col-4">
+                        <label for="inputDefault" class="col-lg-3 control-label">帳號<br></label>
+                        <ul></ul>
+                    </div>
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                    <div class="col-4">
+                        {{ form.login.errors }}
+                        <input class="form-control" autofocus="autofocus" id="id_login" maxlength="30" name="login"
+                               placeholder="帳號" type="text"/>
+                        <ul></ul>
+                    </div>
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                    <div class="col-4">
+                        <label for="inputDefault" class="col-lg-3 control-label">密碼</label>
+                        <ul></ul>
+                    </div>
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                    <div class="col-4">
+                        {{ form.password.errors }}
+                        <input class="form-control" id="id_password" name="password" placeholder="密碼" type="password"/>
+                    </div>
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                </div>
+                <dic class="row">
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                    <div class="col-4">
+                        {{ form.remember.errors }}
+                        <ul></ul>
+                        <input id="id_remember" name="remember" type="checkbox"/> 記住我
+                    </div>
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                </dic>
+
+                {% if redirect_field_value %}
+                    <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+                {% endif %}
+                <div class="row">
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                    <div class="col-4">
+                        <ul></ul>
+                        <div class="col-lg-9 col-lg-offset-3">
+                            <button class="primaryAction btn btn-default btn-primary" type="submit">{% trans "Sign In" %}</button>
+                            <a class="button btn btn-primary" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <ul></ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

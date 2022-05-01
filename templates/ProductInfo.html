@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+<title>商品介紹</title>
+{% block content %}
+    <section class="product-area product-single-area">
+        <div class="container pt-60 pb-0">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product-single-item" data-margin-bottom="63" style="margin-bottom: 63px;">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="product-thumb">
+                                    <div class="zoom zoom-hover" style="position: relative; overflow: hidden;">
+                                        <a class="lightbox-image" data-fancybox="gallery">
+                                            <br>
+                                            <img src="{% static "books_images/ai/" %}{{ commodity.image }}">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <!--== Start Product Info Area ==-->
+                                <div class="product-single-info">
+                                    <h4 class="title"><br><br>{{ commodity.itemName }}</h4>
+                                    <br>
+                                    <div class="prices">
+                                        <span class="price">${{ commodity.price }} NTD</span>
+                                    </div>
+                                    <br>
+                                    <div class="product-action-simple">
+                                        <div class="product-quick-action">
+                                            <div class="product-quick-qty">
+                                                <div class="pro-qty">
+                                                    <form action="/productinfo/{{ commodity.itemName }}" method="post">
+                                                        {% csrf_token %}
+                                                        <input type="text" id="quantity" formmethod="post"
+                                                               name="qty_value" title="Quantity">
+                                                        <br>
+
+                                                        <input class="btn btn-primary" type="submit" value="Add to cart"
+                                                               onclick="relocate()">
+
+                                                    </form>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--== End Product Info Area ==-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                                    type="button" role="tab" aria-controls="home" aria-selected="true">
+                                介紹
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            {{ commodity.info }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        {% if a %}
+            alert("{{ message }}");
+        {% endif %}
+        {% if message_add_cart %}
+            alert("{{ message_add_cart }}");
+        {% endif %}
+        {% if alert_msg %}
+            alert("{{ alert_msg }}");
+        {% endif %}
+        {% if non_verified_msg %}
+            alert("{{ non_verified_msg }}");
+        {% endif %}
+    </script>
+
+{% endblock %}
+
