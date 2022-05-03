@@ -1,5 +1,5 @@
 """
-WSGI config for MyFinalHW project.
+WSGI config for BookStore project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MyFinalHW.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'BookStore.settings')
 
 application = get_wsgi_application()

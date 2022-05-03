@@ -4,7 +4,7 @@ from cart.views import get_member_data
 from order.models import OrderList, Order
 from django.db.models import Max, Sum
 from paypal.standard.forms import PayPalPaymentsForm
-from MyFinalHW import settings
+from BookStore import settings
 
 
 # Create your views here.
